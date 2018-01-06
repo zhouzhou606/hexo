@@ -11,13 +11,13 @@ RUN curl -o- \
 
 ENV NVM_DIR $HOME/.nvm
 # 2. install stable version
-RUN [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"; \
+RUN [ -s $NVM_DIR/nvm.sh ] && \. $NVM_DIR/nvm.sh; \
     nvm install stable; \
     npm install -g hexo-cli; \
     hexo init blog
 
 EXPOSE 4000
 
-CMD [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"; \
+CMD [ -s $NVM_DIR/nvm.sh ] && \. $NVM_DIR/nvm.sh; \
     cd blog && hexo server
 
